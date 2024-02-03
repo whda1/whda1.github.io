@@ -1,0 +1,260 @@
+
+*{
+    padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+    font-family: 'Single Day', cursive;
+    color:white;
+}
+
+h1{
+    font-size:3em; 
+    font-weight: 400px;
+}
+
+h3{
+    font-size:2em;
+    font-weight: 300px;
+}
+
+li,p,label{
+    font-size: 1.5em;
+}
+
+:root{
+    --section-padding:40px;
+    --section-backgound-color:#0a0d1d;
+    --section-font-color:white;
+    --section-width:900px;
+    --section-gap:120px;
+    --section-border-radius:50px;
+    --section-element-gap:20px;
+}
+
+body{
+    background:linear-gradient(45deg,#060b11,#212b5d);
+    background-repeat:no-repeat;
+    height: fit-content;
+    display: flex;
+    flex-direction:column ;
+    align-items: center;
+    gap: var(--section-gap);
+    padding: 20px;
+}
+
+div[class*="Container"]>h1{
+    font-size: 3em;
+    position: absolute;
+    top: -60px;
+}
+
+div[class*="Container"]{
+    border: 1px solid black;
+    background: var(--section-backgound-color);
+    max-width: var(--section-width);
+    width: 100%;
+    height:fit-content;
+    border-radius: var(--section-border-radius);
+    position: relative;
+    padding: var(--section-padding);
+}
+
+div[class*="Container"] .notes{
+    position: absolute;
+    bottom:0px;
+    left: 2em;
+}
+
+header{
+    margin-top:50px ;
+}
+
+
+header p{
+    font-weight: 400;
+    font-size: 3em;
+    position: absolute;
+    z-index: 10;
+    padding: 40px;
+    color: white;
+}
+
+.pixelArt{
+    position: relative;
+    border: 1px solid black;
+    border-radius: var(--section-border-radius);
+    display: flex;
+    flex-direction: column;
+    max-width: 900px;
+    padding: 20px 50px;
+    box-shadow:  10px 10px 10px #890475;
+    background: #0a0d1d;
+}
+
+.art{
+    max-width: 100%;
+    object-fit: fill;
+}
+
+.profileContainer{
+    padding: var(--section-padding);
+    max-width: var(--section-width);
+    height: fit-content;
+    border: 1px solid black;
+    border-radius: var(--section-border-radius);
+    background: var(--section-backgound-color);
+    color: var(--section-font-color);
+    position: relative;
+    top: 0;
+    opacity: 0;
+    transition: opacity 0.5s linear;
+}
+
+
+
+
+
+@keyframes slideIn{
+    from{
+        opacity: 0;
+        transform: translateX(-2em);
+    }
+    to{
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.profileContainer .image{
+    width: 200px;
+    height: 200px;
+    margin: 10px;
+    position: absolute;
+    border-radius: 50%;
+    top:-5em;
+    left: -2em;
+    overflow: hidden;
+    object-fit: fill;
+}
+
+.image img{
+    width: 100%;
+}
+
+
+
+.profileContainer .profile{
+    margin-top: 6em;
+    gap: var(--section-element-gap);
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+
+.cardContainer{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+    grid-auto-rows: auto;
+    gap: var(--section-element-gap);
+    padding: var(--section-padding);
+    opacity: 0;
+}
+
+
+
+
+.card{
+    border-radius: 20px;
+    height: 100%;
+    min-height:300px;
+    position: relative;
+    perspective: 3200px;
+}
+
+
+
+.cardFont,.cardBack{
+    background: #24155c;
+    box-shadow: 5px 5px ;
+    padding: var(--section-padding);
+    width: 100%;
+    height: 100%;
+    border-radius:inherit;
+    backface-visibility: hidden;
+    transition: transform 0.3s linear;
+}
+
+.cardBack{
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: rotateX(-180deg);
+}
+
+.card:not(:last-child):hover .cardFont{
+    transform: rotateX(180deg);
+}
+
+.card:hover .cardBack{
+    transform: rotateX(0deg);
+}
+
+
+.card ul li{
+    list-style:inside ;
+}
+
+.card span{
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    font-size: 1em;
+}
+
+.card img{
+    width: 190px;
+}
+
+.objectiveContainer{
+    display: flex;
+    flex-direction: column;
+    gap: var(--section-element-gap);
+}
+
+.progressElement{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 1em;
+    width: 100%;
+    min-height: 200px;
+}
+
+.progressList{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+}
+
+
+
+input[type="checkbox"]:disabled{
+    filter: invert(100%) hue-rotate(18deg) brightness(5);
+}
+
+.progressList label{
+    font-size: 1.2em;
+}
+
+.contactContainer{
+    display: flex;
+    gap: var(--section-element-gap);
+    flex-direction:column ;
+}
+@media (max-width:600px) {
+    header p{
+        font-size: 2em;
+    }
+    .profileContainer .image{
+        left: -1em;
+    }
+}
